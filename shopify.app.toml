@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "1047039f6695909bfbc5c5221066fbf0"
+application_url = "https://proceeds-midnight-portions-shift.trycloudflare.com"
+embedded = true
+name = "bees-discount"
+handle = "bees-discount"
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_discounts, write_discounts, read_products, write_products"
+
+[auth]
+redirect_urls = [
+  "https://proceeds-midnight-portions-shift.trycloudflare.com/auth/callback",
+  "https://proceeds-midnight-portions-shift.trycloudflare.com/auth/shopify/callback",
+  "https://proceeds-midnight-portions-shift.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
